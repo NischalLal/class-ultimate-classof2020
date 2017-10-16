@@ -6,4 +6,4 @@ class MemberForm(forms.ModelForm):
         model = Member
         fields = ('full_name', 'image', 'phone_number', 'email', 'hometown', 
             'favourite_quote', 'bio', 'facebook_url', 'twitter_url', 
-            'github_url')
+            'github_url', 'instagram_url')
