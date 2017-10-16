@@ -15,7 +15,11 @@ def member_list(request):
 
 def member_detail(request, pk):
     member = get_object_or_404(Member, pk=pk)
-    return render(request, 'members/detail.html', {'member':member})
+    template_name = 'members/detail.html'
+    context = {
+        'member':member
+    }
+    return render(request, template_name, context)
 
 def add_member(request):
     if request.method == 'POST':
@@ -25,7 +29,11 @@ def add_member(request):
             return HttpResponseRedirect(reverse('Member List', args = []))
     else:
         form = MemberForm()
-    return render(request, 'members/new_member.html', {'form':form})
+    template_name = 'members/new_member.html'
+    context = {
+        'form':form
+    }
+    return render(request, template_name, context)
 
 def update_member_info(request, pk):
     member = get_object_or_404(Member, pk=pk)
