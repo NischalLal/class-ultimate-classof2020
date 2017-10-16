@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+  All Members
+{% endblock title %}
+
+{% block MemberList %}
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-sm-10">
+                <h1>Our Members</h1>
+                <p class = 'lead'>
+                    lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div> <!-- row -->
+<a href = "{% url 'Add Member' %}" role = 'button' class = 'btn btn-primary'>Be A Member</a>
+        <div class = "row">
+            {% for member in all_member  %}
+                 <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+
+                    <div class = "card">
+                    <a href = "{% url 'Member Detail' pk=member.pk %}" >
+                        <img class = "card-img-top img-responsive" src = {{member.image.url}}>
+                    </a> <!-- Link-To-Detail -->
+                        <div class = "card-block">
+                            <figure class = "profile">
+                                <img src = {{member.image.url}} class = "profile-avatar" alt="">
+                            </figure>
+                            <h4 class = "card-title mt-3"><a class = ''href = "{% url 'Member Detail' pk=member.pk %}" >{{member.full_name}}</a></h4>
+                            <div class = "meta">
+                                <a>Friends</a>
+                            </div>
+                            <div class = "card-text">
+                                {{member.bio|truncatewords:10}}
+                            </div>
+                        </div> <!-- card-block -->
+                    </div> <!-- card -->
+                </div>
+            {% endfor %}
+        </div> <!-- row -->
+    </div> <!-- container -->
+    
+
+
+{% endblock MemberList %}

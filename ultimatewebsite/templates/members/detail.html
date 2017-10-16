@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}
+    {{member.full_name}}
+{% endblock title %}
+{% block MemberDetail %}
+<div class = 'container'>
+<p class="lead"><a href="{% url 'Member List' %}">&laquo; All Members Of Our Class</a> </p>
+    <div class = 'row'>
+
+        <div class=" col-sm-offset-2 col-sm-8">
+             <a class = 'btn btn-warning' href = "{% url 'Member Update' pk=member.pk %}">Update</a>
+     <hr>
+            <div class="card hovercard">
+                <div class="card-background">
+                    <img class="card-bkimg" alt="" src = {{member.image.url}}>
+                    <!-- http://lorempixel.com/850/280/people/9/ -->
+                </div>
+                <div class="useravatar">
+                    <img alt="" src = {{member.image.url}}>
+                </div>
+                <div class="card-info"> <span class="card-title">{{member.full_name}}</span>
+
+                </div>
+            </div> <!-- card hovercard -->
+
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class = 'fa fa-user-circle'></span>
+                        <div class="hidden-xs">About {{member.full_name}}</div>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="fa fa-info" aria-hidden="true"></span>
+                        <div class="hidden-xs">Contact and Basic Info</div>
+                    </button>
+                </div>
+               
+            </div>
+
+            <div class="well">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">
+                          {{member.bio|linebreaks}}
+                        </div>
+
+                        <div class="tab-pane fade in" id="tab2">
+                            <span class="fa fa-location-arrow" aria-hidden="true"></span>&nbsp;&nbsp;{{member.hometown}}
+                            </br>
+                            {% if member.website %}
+                                <span class="fa fa-external-link" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://mywebsite.com/" target="_blank">My Website</a>
+                            {% endif %}
+                            
+                            </br>
+                            <span class="fa fa-mobile" aria-hidden="true"></span>&nbsp;&nbsp;<a href="tel:{{member.phone_number}}">+977 {{member.phone_number}}
+                            </br>
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;<a href="mailto:{{member.email}}">Drop me a line</a>
+                    <hr />
+                            <h3>Social</h3>
+                            {% if member.facebook_url %}
+                                <a href="{{member.facebook_url}}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>&nbsp;&nbsp;&nbsp; 
+                            {% endif %}
+                            {% if member.facebook_url %}
+                                <a href="{{member.twitter_url}}" target="_blank"><i class="fa fa-twitter fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if member.facebook_url %}
+                                <a href="https://np.linkedin.com/in/" target="_blank"><i class="fa fa-linkedin fa-2x" ></i></a>&nbsp;&nbsp;&nbsp; 
+                            {% endif %}
+                            {% if member.facebook_url %}
+                                <a href="{{member.github_url}}" target="_blank"><i class="fa fa-github fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                             
+                         <div class="clearfix visible-xs"></div>
+                    </div> <!-- tab-pane fade in id = 2 -->
+                    </div> <!-- tab-content -->
+             </div> <!-- well -->
+            </div>
+        
+        </div>
+    </div> <!-- row -->
+</div> <!-- container -->
+
+    
+{% endblock MemberDetail %}

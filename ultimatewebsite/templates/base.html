@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="We're the NCIT Class of 2020.">
+
+    <title>{% block title %} {% endblock title %}- Class of 2020</title>
+    
+    <link rel = 'stylesheet' type = 'text/css' href = "{% static 'css/bootstrap.min.css' %}">
+    <link rel = 'stylesheet' type = 'text/css' href = "{% static 'css/bootstrap.css' %}">
+    <link rel = 'stylesheet' type = 'text/css' href = "{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/main.css' %}">
+
+  </head>
+
+  <body>
+    <nav class = 'navbar navbar-default'>
+      <div class = 'container'>
+          <div class="navbar-header">
+            <button type = 'button' class = 'navbar-toggle collapsed' data-toggle = 'collapse' data-target = "#collapseMenu" aria-expanded = "false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class = 'navbar-brand' href = "https://classof2020.xyz">Class of 2020</a>
+          </div> <!-- navbar-header -->
+
+          <div class = 'collapse navbar-collapse' id = 'collapseMenu'>
+              <ul class="nav navbar-nav">
+                  <li><a href="{% url 'Member List' %}">Class</a></li>
+
+              </ul>
+
+
+            <form method = 'GET'  action = '' class = 'navbar-form navbar-right' >
+              <div class = 'form-group'>
+                <input type = 'text' name = '' value = '' placeholder = 'Search'/>
+              </div> <!-- form-group -->
+              <div class = 'form-group'>
+                <input type = 'submit' value = 'Search'/>
+              </div> <!-- form-group -->
+            </form>
+
+          </div> <!-- collapse navbar-collapse -->
+      </div> <!-- container -->
+    </nav>
+
+{% block MemberList %} {% endblock MemberList %}
+{% block MemberDetail %} {% endblock MemberDetail %}
+{% block NewMember %} {% endblock NewMember %}
+
+<script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
+  <script rel = 'stylesheet' type = 'text/css' href = "{% static 'js/jquery-2.1.4.min.js' %}"></script>
+  <script src = "{% static 'js/bootstrap.min.js' %}"></script>
+  <script src = "{% static 'js/bootstrap.js' %}"></script>
+<script src = "{% static "js/main.js" %}"></script>
+
+  </body>
+</html>
