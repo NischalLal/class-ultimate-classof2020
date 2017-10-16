@@ -22,7 +22,10 @@ def member_list(request):
     context = {
         'all_member': all_member
     }
-    return render(request, template_name, context)
+    if not query_string:
+        return render(request, template_name, context)
+    else:
+        return render(request, 'members/search.html', {'all_member':all_member})
 
 def member_detail(request, pk):
     member = get_object_or_404(Member, pk=pk)
