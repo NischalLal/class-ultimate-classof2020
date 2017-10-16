@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, HttpResponse,\
                             HttpResponseRedirect
 from members.forms import MemberForm
@@ -7,6 +8,16 @@ from django.urls import reverse
 
 def member_list(request):
     all_member = Member.objects.all().order_by('full_name')
+
+    # SEARCH 
+    query_string = request.GET.get('members')
+    if query_string:
+        all_member = all_member.filter(
+            Q(full_name__icontains = query_string)|
+            Q(bio__icontains = query_string)
+            # Q(alt__icontains = query_string)|
+            
+            ).distinct()
     template_name = 'members/list.html'
     context = {
         'all_member': all_member
