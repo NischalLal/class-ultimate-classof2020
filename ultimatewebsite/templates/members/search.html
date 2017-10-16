@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block SearchList %}
+    <div class = "container">
+<p class="lead"><a href="{% url 'Member List' %}">&laquo; All Members Of Our Class</a> </p>
+        <div class = "row">
+        <h1>Best Result We GET!!</h1>
+            {% for member in all_member  %}
+                 <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+
+                    <div class = "card">
+                    <a href = "{% url 'Member Detail' pk=member.pk %}" >
+                        <img class = "card-img-top img-responsive" src = {{member.image.url}}>
+                    </a> <!-- Link-To-Detail -->
+                        <div class = "card-block">
+                            <figure class = "profile">
+                                <img src = {{member.image.url}} class = "profile-avatar" alt="">
+                            </figure>
+                            <h4 class = "card-title mt-3"><a class = ''href = "{% url 'Member Detail' pk=member.pk %}" >{{member.full_name}}</a></h4>
+                            <div class = "meta">
+                                <a>Friends</a>
+                            </div>
+                            <div class = "card-text">
+                                {{member.bio|truncatewords:10}}
+                            </div>
+                        </div> <!-- card-block -->
+                    </div> <!-- card -->
+                </div>
+            {% endfor %}
+        </div> <!-- row -->
+    </div> <!-- container -->
+{% endblock SearchList %}
