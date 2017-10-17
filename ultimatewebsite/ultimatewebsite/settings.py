@@ -44,8 +44,7 @@ MY_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # ADD APPS HERE
-]
+    'crispy_forms']
 
 INSTALLED_APPS = MY_APPS + DEFAULT_APPS + THIRD_PARTY_APPS
 
