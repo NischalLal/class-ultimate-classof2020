@@ -21,6 +21,7 @@ Too Quick Installation Process
     python manage runserver
 
 
+Detailedd Installation Process
 
 ++++++++++++++++++
 Installing Python
