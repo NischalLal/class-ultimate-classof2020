@@ -2,6 +2,8 @@ from django import forms
 from members.models import Member
 
 class MemberForm(forms.ModelForm):
+    favourite_quote = forms.CharField(
+        widget = forms.Textarea)
     class Meta:
         model = Member
         fields = ('full_name', 'image', 'phone_number', 'email', 'hometown', 

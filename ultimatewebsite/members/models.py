@@ -8,17 +8,17 @@ class Member(models.Model):
     phone_number = models.CharField('Phone Number', max_length = 10)
     email = models.CharField('Email', max_length = 150)
     hometown = models.CharField("Your HomeTown", max_length = 200)
-    favourite_quote = models.CharField(max_length = 100, blank = True)
+    favourite_quote = models.CharField(max_length = 200, blank = True)
     bio = models.TextField()
     your_website = models.URLField(blank = True, null = True, default = 'https://pythonair.me')
     facebook_url = models.CharField('Facebook URL', max_length = 100,
-                     blank = True)
+                     blank = True, default = 'https://www.facebook.com')
     twitter_url = models.CharField('Twitter URL', max_length = 100,
-                     blank = True)
+                     blank = True, default = 'https://www.twitter.com')
     instagram_url = models.CharField('Instagram URL', max_length = 100,
-     blank = True)
+     blank = True, default = 'https://www.instagram.com')
     github_url = models.CharField('Github URL', max_length = 100,
-                     blank = True)
+                     blank = True, default = 'https://www.github.com')
     class Meta:
         verbose_name = "Member"
         verbose_name_plural = "Members"
