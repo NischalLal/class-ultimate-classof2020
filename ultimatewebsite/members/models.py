@@ -12,13 +12,13 @@ class Member(models.Model):
     bio = models.TextField()
     your_website = models.URLField(blank = True, null = True, default = 'https://pythonair.me')
     facebook_url = models.CharField('Facebook URL', max_length = 100,
-                     blank = True, default = 'https://www.facebook.com/your_username')
+                     blank = True, null = True, default = 'https://www.facebook.com/your_username')
     twitter_url = models.CharField('Twitter URL', max_length = 100,
-                     blank = True, default = 'https://www.twitter.com/your_username')
+                     blank = True, null = True,  default = 'https://www.twitter.com/your_username')
     instagram_url = models.CharField('Instagram URL', max_length = 100,
-     blank = True, default = 'https://www.instagram.com/your_username')
+     blank = True, null = True, default = 'https://www.instagram.com/your_username')
     github_url = models.CharField('Github URL', max_length = 100,
-                     blank = True, default = 'https://www.github.com/your_username')
+                     blank = True, null = True,  default = 'https://www.github.com/your_username')
     class Meta:
         verbose_name = "Member"
         verbose_name_plural = "Members"
