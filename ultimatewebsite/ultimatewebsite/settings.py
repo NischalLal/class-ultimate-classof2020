@@ -138,3 +138,5 @@ STATICFILES_DIRS = [
     # '/var/www/static/',
 ]
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
