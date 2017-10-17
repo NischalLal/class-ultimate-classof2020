@@ -47,7 +47,7 @@
                             <span class="fa fa-location-arrow" aria-hidden="true"></span>&nbsp;&nbsp;{{member.hometown}}
                             </br>
                             {% if member.website %}
-                                <span class="fa fa-external-link" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://mywebsite.com/" target="_blank">My Website</a>
+                                <span class="fa fa-external-link" aria-hidden="true"></span>&nbsp;&nbsp;<a href="{{member.website}}" target="_blank">My Website</a>
                             {% endif %}
                             
                             </br>
@@ -57,16 +57,16 @@
                     <hr />
                             <h3>Social</h3>
                             {% if member.facebook_url %}
-                                <a href="{{member.facebook_url}}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>&nbsp;&nbsp;&nbsp; 
+                                <a href="https://{{member.facebook_url}}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>&nbsp;&nbsp;&nbsp; 
                             {% endif %}
-                            {% if member.facebook_url %}
-                                <a href="{{member.twitter_url}}" target="_blank"><i class="fa fa-twitter fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
+                            {% if member.twitter_url %}
+                                <a href="https://{{member.twitter_url}}" target="_blank"><i class="fa fa-twitter fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
                             {% endif %}
-                            {% if member.facebook_url %}
-                                <a href="https://np.linkedin.com/in/" target="_blank"><i class="fa fa-linkedin fa-2x" ></i></a>&nbsp;&nbsp;&nbsp; 
+                            {% if member.linkedin_url %}
+                                <a href="https://{{member.linkedin_url}}" target="_blank"><i class="fa fa-linkedin fa-2x" ></i></a>&nbsp;&nbsp;&nbsp; 
                             {% endif %}
-                            {% if member.facebook_url %}
-                                <a href="{{member.github_url}}" target="_blank"><i class="fa fa-github fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
+                            {% if member.github_url %}
+                                <a href="https://{{member.github_url}}" target="_blank"><i class="fa fa-github fa-2x" ></i></a>&nbsp;&nbsp;&nbsp;
                             {% endif %}
                              
                          <div class="clearfix visible-xs"></div>

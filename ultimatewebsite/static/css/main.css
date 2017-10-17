@@ -150,10 +150,12 @@ h5 {
     min-width: 130%;
 }
 .card.hovercard .useravatar {
+    height: 1000px;
     position: absolute;
     top: 15px;
     left: 0;
     right: 0;
+
 }
 .card.hovercard .useravatar img {
     width: 100px;
