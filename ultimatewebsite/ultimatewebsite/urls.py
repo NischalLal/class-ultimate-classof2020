@@ -5,6 +5,7 @@ from django.contrib import admin
 from members.views import member_list
 
 urlpatterns = [
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', member_list, name = 'Member List Home'),
     url(r'^members/', include('members.urls')),

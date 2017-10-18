@@ -38,10 +38,10 @@
 
             <ul class = 'nav navbar-nav navbar-right'>
             {% if request.user.is_authenticated %}
-              <li><a href = "#" class = 'btn-link'>Logout</a></li>
+                <li><a href = "{% url 'auth_logout' %}" class = 'btn-link'>Logout</a></li>
             {% else %}
-                <li><a href = "#">Login</a></li>
-                <li><a href = "#">Register</a></li>
+                <li><a href = "{% url 'auth_login' %}">Login</a></li>
+                <li><a href = "{% url 'registration_register' %}">Register</a></li
             {% endif %}
             </ul>
 
@@ -66,6 +66,8 @@
 {% block BlogPostList %} {% endblock BlogPostList %}
 {% block NewBlogPost %} {% endblock NewBlogPost %}
 {% block BlogPostDetail %}{% endblock BlogPostDetail %}
+{% block content %} {% endblock content %}
+
 
 <script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
   <script rel = 'stylesheet' type = 'text/css' href = "{% static 'js/jquery-2.1.4.min.js' %}"></script>

@@ -41,7 +41,10 @@
         </div>
     {% else %}
     <h1>You are not authenticated user</h1>
-    Authentication System is coming very soon!!
+Please Login/Register:
+
+<li><a href = "{% url 'auth_login' %}">Login</a></li>
+                <li><a href = "{% url 'registration_register' %}">Register</a></li
     {% endif %}
 
     </div> <!-- row -->
