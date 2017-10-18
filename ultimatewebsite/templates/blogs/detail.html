@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block MemberDetail %}
+
+<div class="jumbotron">
+    <div class = 'container'>
+<a href = "{% url 'Update BlogPost' pk=blogpost.pk %}" role = 'button' class = 'btn btn-primary'>Update</a>
+
+    <div class = 'row'>
+        <div class=" col-sm-offset-2 col-sm-8">
+
+            <div class = 'blogpost-title'>
+                <h1>{{blogpost.title}}</h1>
+            </div>
+
+            <div class = 'blogpost-image'>
+                <img src = {{blogpost.main_image.url}} class = 'img-responsive'>
+            </div>
+
+            <div class = 'blogpost-body'>
+                <p class = 'lead'>{{blogpost.text}}</p>
+            </div>
+
+            
+
+                
+                {% if request.user.is_authenticated %}
+                    <form method = 'POST' action = '' enctype = 'multipart/form-data'>{% csrf_token %}
+                        {{form|crispy}}
+
+                    <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
+                            </form>
+                {% else %}
+                    <h3>Please <a href = "{% url 'auth_login' %}" class = 'btn btn-primary'>Login</a> To Comment</h3>
+                {% endif %}
+                    
+                    {% for comment in comments  %}
+                        <p>{{comment}}</p>
+                    {% endfor %}
+
+                    <hr>
+
+
+
+                    <div class="pagination">
+                <span class="step-links">
+                    {% if all_blogpost.has_previous %}
+                        <a href="?page={{ all_blogpost.previous_page_number }}" class = 'btn btn-primary'>previous</a>
+                    {% endif %}
+
+                    {% if all_blogpost.has_next %}
+                        <a href="?page={{ all_blogpost.next_page_number }} " class = 'btn btn-primary'>next</a>
+                    {% endif %}
+                </span>
+            </div> <!-- pagination -->
+
+
+
+        </div> <!-- outer-column --> 
+    </div> <!-- row -->
+</div> <!-- container -->
+</div>
+
+
+    
+{% endblock MemberDetail %}
