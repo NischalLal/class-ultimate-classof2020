@@ -8,7 +8,6 @@ class BlogPostAdmin(admin.ModelAdmin):
         Admin View for BlogPost
     '''
     list_display = ('title', 'author', 'slug', 'created_on')
-    prepopulated_fields = {'slug':('title')}
-
+    prepopulated_fields = {'slug':('title',)}
 
 admin.site.register(BlogPost, BlogPostAdmin)

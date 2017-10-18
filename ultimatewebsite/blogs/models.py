@@ -25,3 +25,18 @@ class BlogPost(CommonDateTimeInfo):
 
     def __str__(self):
         return self.title
+
+
+
+class Comment(CommonDateTimeInfo):
+    commenter = models.ForeignKey(User, related_name = 'comments')
+    comment_text = models.CharField(max_length=50)
+    blogpost = models.ForeignKey(BlogPost, 
+        related_name = 'comments')
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return self.comment_text
