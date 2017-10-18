@@ -34,7 +34,7 @@
               <ul class="nav navbar-nav">
                   <li><a href="{% url 'Member List' %}">Class</a></li>
                   <li><a href="{% url 'BlogPost List' %}">Blog</a></li>
-                  <li><a href="{% url 'BlogPost List' %}">Downloads</a></li>
+                  <li><a href="{% url 'Download List' %}">Downloads</a></li>
               </ul>
 
             <ul class = 'nav navbar-nav navbar-right'>
@@ -69,7 +69,7 @@
 {% block BlogPostDetail %}{% endblock BlogPostDetail %}
 {% block content %} {% endblock content %}
 {% block DownloadList %} {% endblock DownloadList %}
-
+{% block UploadDownloadFiles %}{% endblock UploadDownloadFiles %}
 
 <script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
   <script rel = 'stylesheet' type = 'text/css' href = "{% static 'js/jquery-2.1.4.min.js' %}"></script>

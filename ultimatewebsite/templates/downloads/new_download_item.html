@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Upload
+{% endblock title %}
+
+
+            {% block UploadDownloadFiles %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+            {% crispy form %}
+                    </div>
+                </div>
+            </div>
+            {% endblock UploadDownloadFiles %}
+       
