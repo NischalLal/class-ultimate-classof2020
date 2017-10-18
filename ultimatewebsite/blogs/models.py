@@ -12,7 +12,7 @@ class CommonDateTimeInfo(models.Model):
         abstract = True
 
 class BlogPost(CommonDateTimeInfo):
-    title = models.CharField(max_length = 100)
+    title = models.CharField(max_length = 100, unique = True)
     slug = models.SlugField()
     author = models.ForeignKey('auth.user', related_name = 'uploaded_blogpost')
     main_image = models.ImageField(upload_to = 'blogs')

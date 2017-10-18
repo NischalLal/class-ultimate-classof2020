@@ -10,7 +10,7 @@ def member_list(request):
     all_member = Member.objects.all().order_by('full_name')
 
     # SEARCH 
-    query_string = request.GET.get('members')
+    query_string = request.GET.get('search_q')
     if query_string:
         all_member = all_member.filter(
             Q(full_name__icontains = query_string)|

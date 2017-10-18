@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block BlogPostDetail %}
-
+<p class="lead"><a href="{% url 'BlogPost List' %}">&laquo; All Blogs Of Our Class</a> </p>
 <div class="jumbotron">
     <div class = 'container'>
 <a href = "{% url 'Update BlogPost' slug=blogpost.slug %}" role = 'button' class = 'btn btn-primary'>Update</a>
@@ -23,7 +23,7 @@
                 <p class = 'lead'>{{blogpost.text}}</p>
             </div>
 
-            
+                {% if request.user.is_authenticated %}
 
                     <form method = 'POST' action = '' enctype = 'multipart/form-data'>{% csrf_token %}
                         {{form|crispy}}
@@ -33,6 +33,7 @@
                     
 
 
+                    
                     <div class = 'blogpost-comment'>
 
                         <div class="container">
@@ -55,6 +56,10 @@
                         {% endfor %}
                         </div><!-- /container -->
                     </div>
+                    {% else %}
+
+                    <P>Please Login to Comment</P>
+                    {% endif %}
 
 
 

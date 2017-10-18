@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect,\
                             HttpResponse
 from blogs.forms import BlogPostForm, NewCommentForm
@@ -6,8 +7,16 @@ from django.urls import reverse
 # Create your views here.
 
 def blogpost_list(request):
-    print(type(request.user))
     all_blogpost = BlogPost.objects.all()
+# SEARCH 
+    query_string = request.GET.get('search_q')
+    if query_string:
+        all_blogpost = all_blogpost.filter(
+            Q(title__icontains = query_string)|
+            Q(text__icontains = query_string)
+            # Q(alt__icontains = query_string)|
+            
+            ).distinct()
     template_name = 'blogs/list.html'
     context = {
         'all_blogpost': all_blogpost
@@ -48,6 +57,8 @@ def add_blogpost(request):
         if form.is_valid():
             form = form.save(commit = False)
             form.author = request.user
+            from django.utils.text import slugify
+            form.slug = slugify(form.title)
             form.save()
             return HttpResponseRedirect(reverse('BlogPost List', args = []))
     else:
