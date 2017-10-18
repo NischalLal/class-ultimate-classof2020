@@ -31,43 +31,30 @@
                     <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
                             </form>
                     
-                    
-                    <div class = 'commenter'>
-                        <p>{{blogpost.commenter}}</p>
-                    </div>
-
-                        <p>{{comment}}</p>
-                    
 
 
                     <div class = 'blogpost-comment'>
 
                         <div class="container">
+
                             <div class="row">
-                                <div class="col-sm-12">
-                                <h3>Comment Section</h3>
-                                </div><!-- /col-sm-12 -->
-                            </div><!-- /row -->
+                                {% for comment in comments  %}
 
-                        <div class="row">
-                            {% for comment in comments  %}
+                                <div class="col-sm-5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                        <strong>{{comment.commenter}}</strong> <span class="text-muted">{{comment.created_on}}</span>
+                                        </div>
+                                        <div class="panel-body">
+                                        {{comment.comment_text}}
+                                        </div><!-- /panel-body -->
+                                    </div><!-- /panel panel-default -->
+                                </div><!-- /col-sm-5 -->
 
-                        <div class="col-sm-5">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                <strong>{{comment.commenter}}</strong> <span class="text-muted">{{comment.created_on}}</span>
-                                </div>
-                                <div class="panel-body">
-                                {{comment.comment_text}}
-                                </div><!-- /panel-body -->
-                            </div><!-- /panel panel-default -->
-                        </div><!-- /col-sm-5 -->
-
-                        
+                            </div> <!-- row -->
                         {% endfor %}
                         </div><!-- /container -->
                     </div>
-                    <hr>
 
 
 
