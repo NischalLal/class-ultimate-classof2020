@@ -28,7 +28,9 @@ class MemberForm(forms.ModelForm):
                         'Member Form',
                         'full_name',
                         'image',
-                        # HTML("""
+                        Alert(content='<strong>Warning!</strong> All Info Are Public', css_class = 'alert alert-info'),
+                        PrependedText('phone_number', '+977', placeholder = '9818681689'),
+                        'your_website',                        # HTML("""
                         # <p>We use notes to get better, <strong>please help us {{ username }}</strong></p>"""),
                         # 'phone_number',
                         Field('email', css_class = 'ffffffffff'),
@@ -74,3 +76,31 @@ class MemberForm(forms.ModelForm):
             raise forms.ValidationError("Something Missing E.G '.com', '.edu', '.me', '.org'")
 
         return email
+
+    def clean_facebook_url(self):
+        username = self.cleaned_data.get('facebook_url')
+        if username:
+            return 'https://www.facebook.com/' + username
+        else:
+            return username
+
+    def clean_twitter_url(self):
+        username = self.cleaned_data.get('twitter_url')
+        if username:
+            return 'https://www.twitter.com/' + username
+        else:
+            return username
+
+    def clean_instagram_url(self):
+        username = self.cleaned_data.get('instagram_url')
+        if username:
+            return 'https://www.instagram.com/' + username
+        else:
+            return username
+
+    def clean_github_url(self):
+        username = self.cleaned_data.get('github_url')
+        if username:
+            return 'https://www.github.com/' + username
+        else:
+            return username
