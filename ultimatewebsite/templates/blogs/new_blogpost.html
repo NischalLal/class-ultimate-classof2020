@@ -4,21 +4,7 @@
 {% block NewBlogPost %}
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-            {% if not request.user.is_authenticated %}
-                    <h1>Sorry!! Only Authenticated Users Are Allowed To Perform This Actioin</h1>
 
-                    <hr>
-                    <ul class = 'list-unstyled'>
-                    <h3>Already Registered??
-                        <li><a href = "{% url 'auth_login' %}" class = 'btn btn-primary'>Login</a></li>
-                        <br>
-                    <h3>New To This Group??
-                        <li><a href = "{% url 'registration_register' %}" class = 'btn btn-primary btn-danger'>Register</a></li>
-                    </ul>
-                
-                
-                
-            {% else %}
             <form method = 'POST' action = '' enctype = 'multipart/form-data'>
             {% csrf_token %}
 
@@ -29,7 +15,6 @@
 
             <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
             </form>
-            {% endif %}
         </div>
     </div>
 {% endblock NewBlogPost %}

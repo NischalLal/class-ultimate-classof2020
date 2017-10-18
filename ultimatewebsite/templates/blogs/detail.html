@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block MemberDetail %}
+{% block BlogPostDetail %}
 
 <div class="jumbotron">
     <div class = 'container'>
-<a href = "{% url 'Update BlogPost' pk=blogpost.pk %}" role = 'button' class = 'btn btn-primary'>Update</a>
+<a href = "{% url 'Update BlogPost' slug=blogpost.slug %}" role = 'button' class = 'btn btn-primary'>Update</a>
 
     <div class = 'row'>
         <div class=" col-sm-offset-2 col-sm-8">
@@ -12,7 +12,9 @@
             <div class = 'blogpost-title'>
                 <h1>{{blogpost.title}}</h1>
             </div>
-
+            <div class = 'blogpost-author'>
+                <p>{{blogpost.author}}</p>
+            </div>
             <div class = 'blogpost-image'>
                 <img src = {{blogpost.main_image.url}} class = 'img-responsive'>
             </div>
@@ -23,36 +25,49 @@
 
             
 
-                
-                {% if request.user.is_authenticated %}
                     <form method = 'POST' action = '' enctype = 'multipart/form-data'>{% csrf_token %}
                         {{form|crispy}}
 
                     <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
                             </form>
-                {% else %}
-                    <h3>Please <a href = "{% url 'auth_login' %}" class = 'btn btn-primary'>Login</a> To Comment</h3>
-                {% endif %}
                     
-                    {% for comment in comments  %}
+                    
+                    <div class = 'commenter'>
+                        <p>{{blogpost.commenter}}</p>
+                    </div>
+
                         <p>{{comment}}</p>
-                    {% endfor %}
+                    
 
+
+                    <div class = 'blogpost-comment'>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                <h3>Comment Section</h3>
+                                </div><!-- /col-sm-12 -->
+                            </div><!-- /row -->
+
+                        <div class="row">
+                            {% for comment in comments  %}
+
+                        <div class="col-sm-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                <strong>{{comment.commenter}}</strong> <span class="text-muted">{{comment.created_on}}</span>
+                                </div>
+                                <div class="panel-body">
+                                {{comment.comment_text}}
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+
+                        
+                        {% endfor %}
+                        </div><!-- /container -->
+                    </div>
                     <hr>
-
-
-
-                    <div class="pagination">
-                <span class="step-links">
-                    {% if all_blogpost.has_previous %}
-                        <a href="?page={{ all_blogpost.previous_page_number }}" class = 'btn btn-primary'>previous</a>
-                    {% endif %}
-
-                    {% if all_blogpost.has_next %}
-                        <a href="?page={{ all_blogpost.next_page_number }} " class = 'btn btn-primary'>next</a>
-                    {% endif %}
-                </span>
-            </div> <!-- pagination -->
 
 
 
@@ -63,4 +78,12 @@
 
 
     
-{% endblock MemberDetail %}
+{% endblock BlogPostDetail %}
+
+
+
+<!--                             <div class="col-sm-1">
+    <div class="thumbnail">
+    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+    </div>/thumbnail
+</div>/col-sm-1 -->

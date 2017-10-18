@@ -14,7 +14,7 @@ class CommonDateTimeInfo(models.Model):
 class BlogPost(CommonDateTimeInfo):
     title = models.CharField(max_length = 100)
     slug = models.SlugField()
-    author = models.ForeignKey(User, related_name = 'uploaded_blogpost')
+    author = models.ForeignKey('auth.user', related_name = 'uploaded_blogpost')
     main_image = models.ImageField(upload_to = 'blogs')
     text = models.TextField()
 
@@ -29,7 +29,7 @@ class BlogPost(CommonDateTimeInfo):
 
 
 class Comment(CommonDateTimeInfo):
-    commenter = models.ForeignKey(User, related_name = 'comments')
+    commenter = models.ForeignKey('auth.user')
     comment_text = models.TextField(max_length = 50)
     blogpost = models.ForeignKey(BlogPost, 
         related_name = 'comments')

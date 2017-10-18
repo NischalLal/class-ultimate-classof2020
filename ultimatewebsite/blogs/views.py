@@ -6,6 +6,7 @@ from django.urls import reverse
 # Create your views here.
 
 def blogpost_list(request):
+    print(type(request.user))
     all_blogpost = BlogPost.objects.all()
     template_name = 'blogs/list.html'
     context = {
@@ -47,8 +48,8 @@ def add_blogpost(request):
         if form.is_valid():
             form = form.save(commit = False)
             form.author = request.user
-
-            return HttpResponseRedirect(reverse('BlogPost Detail', args = []))
+            form.save()
+            return HttpResponseRedirect(reverse('BlogPost List', args = []))
     else:
         form = BlogPostForm()
     return render(request, 'blogs/new_blogpost.html', {'form':form})
@@ -60,7 +61,7 @@ def update_blogpost(request, slug):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('BlogPost Detail',
-             args = [blogpost.slug]))
+             kwargs = {'slug':slug}))
 
     else:
         form = BlogPostForm(instance = blogpost)
