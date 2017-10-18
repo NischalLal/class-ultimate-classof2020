@@ -44,7 +44,8 @@ MY_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'crispy_forms']
+    'crispy_forms', 'registration'
+]
 
 INSTALLED_APPS = MY_APPS + DEFAULT_APPS + THIRD_PARTY_APPS
 
@@ -140,3 +141,11 @@ STATICFILES_DIRS = [
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap'
+
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
