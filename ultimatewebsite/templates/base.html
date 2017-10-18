@@ -36,6 +36,14 @@
                   <li><a href="{% url 'BlogPost List' %}">Blog</a></li>
               </ul>
 
+            <ul class = 'nav navbar-nav navbar-right'>
+            {% if request.user.is_authenticated %}
+              <li><a href = "#" class = 'btn-link'>Logout</a></li>
+            {% else %}
+                <li><a href = "#">Login</a></li>
+                <li><a href = "#">Register</a></li>
+            {% endif %}
+            </ul>
 
             <form method = 'GET'  action = '' class = 'navbar-form navbar-right' >
               <div class = 'form-group'>
