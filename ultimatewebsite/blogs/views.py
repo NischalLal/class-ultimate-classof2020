@@ -64,4 +64,4 @@ def update_blogpost(request, slug):
 
     else:
         form = BlogPostForm(instance = blogpost)
-    return render(request, 'blogs/new_blogpost.html', {'form':form}).
+    return render(request, 'blogs/new_blogpost.html', {'form':form})
