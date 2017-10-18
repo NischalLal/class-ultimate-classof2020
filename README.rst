@@ -20,9 +20,28 @@ Too Quick Installation Process
 
     python manage runserver
 
++++++++++++++++++++
+Some Images 
++++++++++++++++++++
+
+============
+
+.. image:: /ultimatewebsite/media/our_member.png
+
+=============
+
+.. image:: /ultimatewebsite/media/new_blogpost.png
+
+============
+
+.. image:: /ultimatewebsite/media/blogpost_detail.png
+
+
+
+
+
 
 Detailedd Installation Process
-
 ++++++++++++++++++
 Installing Python
 ++++++++++++++++++
