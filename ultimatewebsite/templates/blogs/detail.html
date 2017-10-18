@@ -24,7 +24,7 @@
             </div>
 
             <div class = 'blogpost-body'>
-                <p class = 'lead'>{{blogpost.text}}</p>
+                <p class = 'lead'>{{blogpost.text|safe}}</p>
             </div>
 
                 {% if request.user.is_authenticated %}
