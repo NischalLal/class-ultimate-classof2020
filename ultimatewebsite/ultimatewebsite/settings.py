@@ -41,7 +41,7 @@ DEFAULT_APPS = [
 ]
 
 MY_APPS = [
-    'members', 'blogs'
+    'members', 'blogs', 'downloads'
 ]
 
 THIRD_PARTY_APPS = [

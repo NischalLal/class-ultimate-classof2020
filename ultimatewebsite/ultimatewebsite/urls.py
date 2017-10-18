@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^$', member_list, name = 'Member List Home'),
     url(r'^members/', include('members.urls')),
     url(r'^blog/', include('blogs.urls')),
+    url(r'^download/',include('downloads.urls')),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
