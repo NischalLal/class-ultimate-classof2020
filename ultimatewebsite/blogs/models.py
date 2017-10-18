@@ -30,7 +30,7 @@ class BlogPost(CommonDateTimeInfo):
 
 class Comment(CommonDateTimeInfo):
     commenter = models.ForeignKey(User, related_name = 'comments')
-    comment_text = models.CharField(max_length=50)
+    comment_text = models.TextField(max_length = 50)
     blogpost = models.ForeignKey(BlogPost, 
         related_name = 'comments')
 
