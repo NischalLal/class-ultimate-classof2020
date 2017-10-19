@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['nischallalshrestha.pythonanywhere.com', '127.0.0.1']
 
+
 # Application definition
 
 DEFAULT_APPS = [
