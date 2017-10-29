@@ -69,7 +69,7 @@ to get started. The installation is fast and easy.
 Creating an isolated Python environment
 +++++++++++++++++++++++++++++++++++++++
 
-A virtual environment (also called a virtualenv) is like a private box we can stuff useful computer code into for a project
+A virtual environment (also called a virtualenv) is like a private box where we can stuff useful computer code into for a project
 we're working on It is recommended that you use virtualenv to create isolated Python environments, so you can use different package versions for different projects, which is far more practical than installing Python packages system wide.
 
 ++++++
