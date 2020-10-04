@@ -35,16 +35,18 @@ DEFAULT_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
 
 MY_APPS = [
-    'members'
+    'members', 'blogs', 'downloads'
 ]
 
 THIRD_PARTY_APPS = [
-    'crispy_forms']
+    'crispy_forms', 'registration'
+]
 
 INSTALLED_APPS = MY_APPS + DEFAULT_APPS + THIRD_PARTY_APPS
 
@@ -139,4 +141,11 @@ STATICFILES_DIRS = [
 ]
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_TEMPLATE_PACK = "bootstrap3"
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'

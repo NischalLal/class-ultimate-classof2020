@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    BlogPost
+{% endblock title %}
+{% block NewBlogPost %}
+<div class = 'container'>
+    <div class="row">
+    {% if request.user.is_authenticated %}
+        
+        <div class="col-md-offset-2 col-md-8">
+            <h1>BlogPost</h1>
+            <form method = 'POST' action = '' enctype = 'multipart/form-data'>
+            {% csrf_token %}
+
+            
+            {{form|crispy}}
+            <script src = "{% static 'js/tinymce/tinymce.min.js' %}"></script>
+             <script type="text/javascript">
+                tinymce.init({
+                selector: "textarea",
+                branding: false,
+                setup: function (editor) {
+                    editor.on('change', function () {
+                        editor.save();
+                    });
+                }
+            });
+
+            </script>
+            
+
+            <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
+
+
+
+
+
+            </form>
+        </div>
+    {% else %}
+    <h1>You are not authenticated user</h1>
+Please Login/Register:
+
+<li><a href = "{% url 'auth_login' %}">Login</a></li>
+                <li><a href = "{% url 'registration_register' %}">Register</a></li
+    {% endif %}
+
+    </div> <!-- row -->
+</div> <!-- container -->
+{% endblock NewBlogPost %}
+

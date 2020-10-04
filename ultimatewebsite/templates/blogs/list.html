@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+    All BlogPost
+{% endblock title %}
+{% block BlogPostList %}
+    <div class = "container">
+    
+    <a href = "{% url 'Add BlogPost' %}" role = 'button' class = 'btn btn-primary'>New BlogPost  <span class = 'fa fa-pencil'></span></a>
+        <hr>
+        <div class = "row">
+            {% for blogpost in all_blogpost  %}
+                <a href = "{% url 'BlogPost Detail' slug=blogpost.slug %}"> 
+                     <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                        <div class = 'main_image'>
+                            <img  src = {{blogpost.main_image.url}} class = 'img-responsive'>
+                        </div>
+
+                        <div class = 'main-title'>
+                            <h4>{{blogpost.title}}</h4>
+                        </div>
+                </a>
+
+                </div>
+            {% endfor %}
+        </div> <!-- row -->
+    </div> <!-- container -->
+    
+
+
+{% endblock BlogPostList %}

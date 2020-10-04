@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Downloads
+{% endblock title %}
+
+{% block DownloadList %}
+<div class="container">
+<h1>Download Section With Beautiful Category Is Coming Soon Soon!!</h1>
+
+<a href = "{% url 'Upload File' %}" role = 'button' class = 'btn btn-primary'>Upload File  <span class = 'fa fa-upload'></span></a>
+
+    <div class="row">
+    
+        {% for download_item in all_downloads  %}
+            <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                <h4><a href = "{% url 'Download Item' id=download_item.pk  %}" class = 'list-unstyled'>{{download_item.file.name|truncatechars:25}}</a></h4>
+
+                <a href = "{% url 'Download Item' id=download_item.pk %}" class = 'btn btn-danger'>Download  <span class = 'fa fa-download'></span></a>
+             </div>
+        {% endfor %}
+   
+
+</div>
+
+</div>
+
+{% endblock DownloadList %}

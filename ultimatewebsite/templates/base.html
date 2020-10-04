@@ -14,6 +14,7 @@
     <link rel = 'stylesheet' type = 'text/css' href = "{% static 'css/bootstrap.css' %}">
     <link rel = 'stylesheet' type = 'text/css' href = "{% static 'fonts/font-awesome/css/font-awesome.css' %}">
     <link rel = "stylesheet" type = "text/css" href = "{% static 'css/main.css' %}">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
 
   </head>
 
@@ -27,19 +28,28 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class = 'navbar-brand' href = "https://classof2020.xyz">Class of 2020</a>
+            <a class = 'navbar-brand' href = "/members">Class of 2020</a>
           </div> <!-- navbar-header -->
 
           <div class = 'collapse navbar-collapse' id = 'collapseMenu'>
               <ul class="nav navbar-nav">
                   <li><a href="{% url 'Member List' %}">Class</a></li>
-
+                  <li><a href="{% url 'BlogPost List' %}">Blog</a></li>
+                  <li><a href="{% url 'Download List' %}">Downloads</a></li>
               </ul>
 
+            <ul class = 'nav navbar-nav navbar-right'>
+            {% if request.user.is_authenticated %}
+                <li><a href = "{% url 'auth_logout' %}" class = 'btn-link'>Logout</a></li>
+            {% else %}
+                <li><a href = "{% url 'auth_login' %}">Login</a></li>
+                <li><a href = "{% url 'registration_register' %}">Register</a></li
+            {% endif %}
+            </ul>
 
             <form method = 'GET'  action = '' class = 'navbar-form navbar-right' >
               <div class = 'form-group'>
-                <input type = 'text' name = 'members' value = '{{request.GET.Post}}' placeholder = 'Search'/>
+                <input type = 'text' name = 'search_q' value = '{{request.GET.Post}}' placeholder = 'Search'/>
               </div> <!-- form-group -->
               <div class = 'form-group'>
                 <input type = 'submit' value = 'Search'/>
@@ -55,12 +65,18 @@
 {% block MemberDetail %} {% endblock MemberDetail %}
 {% block NewMember %} {% endblock NewMember %}
 {% block SearchList %} {% endblock SearchList %}
+{% block BlogPostList %} {% endblock BlogPostList %}
+{% block NewBlogPost %} {% endblock NewBlogPost %}
+{% block BlogPostDetail %}{% endblock BlogPostDetail %}
+{% block content %} {% endblock content %}
+{% block DownloadList %} {% endblock DownloadList %}
+{% block UploadDownloadFiles %}{% endblock UploadDownloadFiles %}
 
-<script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
+  <script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
   <script rel = 'stylesheet' type = 'text/css' href = "{% static 'js/jquery-2.1.4.min.js' %}"></script>
   <script src = "{% static 'js/bootstrap.min.js' %}"></script>
   <script src = "{% static 'js/bootstrap.js' %}"></script>
-<script src = "{% static "js/main.js" %}"></script>
+  <script src = "{% static "js/main.js" %}"></script>
 
   </body>
 </html>

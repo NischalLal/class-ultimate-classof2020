@@ -1,6 +1,9 @@
 from django import forms
 from members.models import Member
-
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
+from crispy_forms.layout import Field, Layout, Fieldset, ButtonHolder, Submit, HTML
+from crispy_forms.bootstrap import *
 class MemberForm(forms.ModelForm):
     favourite_quote = forms.CharField(
         widget = forms.Textarea)
@@ -9,6 +12,48 @@ class MemberForm(forms.ModelForm):
         fields = ('full_name', 'image', 'phone_number', 'email', 'hometown', 
             'favourite_quote', 'bio', 'your_website', 'facebook_url', 'twitter_url', 
             'github_url', 'instagram_url')
+
+    def __init__(self, *args, **kwargs):
+        super(MemberForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-MemberForm'
+        self.helper.form_class = 'form'
+        self.helper.form_method = 'POST'
+        self.helper.form_action = ''
+
+        # self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+                    Fieldset(
+                        'Member Form',
+                        'full_name',
+                        'image',
+                        Alert(content='<strong>Warning!</strong> All Info Are Public', css_class = 'alert alert-info'),
+                        PrependedText('phone_number', '+977', placeholder = '9818681689'),
+                        'your_website',                        # HTML("""
+                        # <p>We use notes to get better, <strong>please help us {{ username }}</strong></p>"""),
+                        # 'phone_number',
+                        Field('email', css_class = 'ffffffffff'),
+                        'hometown',
+                        'favourite_quote',
+                        'bio',
+                        PrependedText('facebook_url', 'https://www.facebook.com/', placeholder="username"),
+                        PrependedText('twitter_url', 'https://www.twitter.com/', placeholder="username"),
+                        PrependedText('github_url', 'https://www.github.com/', placeholder="username"),
+                        PrependedText('instagram_url', 'https://www.github.com/', placeholder="username"),
+
+
+
+                    ),
+                    ButtonHolder(
+                        Submit('submit', 'Submit', css_class='btn btn-warning')
+                    )
+                )
+
+
+
+
+
 
     def clean_full_name(self):
         full_name = self.cleaned_data.get('full_name')
@@ -33,33 +78,29 @@ class MemberForm(forms.ModelForm):
         return email
 
     def clean_facebook_url(self):
-        facebook_url = self.cleaned_data.get('facebook_url')
-        if facebook_url is not None:
-            if not 'facebook.com' in facebook_url:
-                raise forms.ValidationError("We don't think this is a facebook URL")
+        username = self.cleaned_data.get('facebook_url')
+        if username:
+            return 'https://www.facebook.com/' + username
+        else:
+            return username
 
-        return facebook_url
     def clean_twitter_url(self):
-        twitter_url = self.cleaned_data.get('twitter_url')
-        if twitter_url is not None:
-            if not 'twitter.com' in twitter_url:
-                raise forms.ValidationError("We don't think this is a twitter URL")
-
-
-        return twitter_url
+        username = self.cleaned_data.get('twitter_url')
+        if username:
+            return 'https://www.twitter.com/' + username
+        else:
+            return username
 
     def clean_instagram_url(self):
-        instagram_url = self.cleaned_data.get('instagram_url')
-        if instagram_url is not None:
-            if not 'instagram.com' in instagram_url:
-                raise forms.ValidationError("We don't think this is a instagram URL")
-
-        return instagram_url
+        username = self.cleaned_data.get('instagram_url')
+        if username:
+            return 'https://www.instagram.com/' + username
+        else:
+            return username
 
     def clean_github_url(self):
-        github_url = self.cleaned_data.get('github_url')
-        if github_url is not None:
-
-            if not 'github.com' in github_url:
-                raise forms.ValidationError("We don't think this is a Github URL")
-        return github_url
+        username = self.cleaned_data.get('github_url')
+        if username:
+            return 'https://www.github.com/' + username
+        else:
+            return username

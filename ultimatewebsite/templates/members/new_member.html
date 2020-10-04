@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}
-  New Member
+  Member
 {% endblock title %}
 
 {% block NewMember %}
   <div class = 'container'>
-      <h1 class = 'danger'>This Form Looks As Beautiful As You actually are!!</h1>
     <div class="row">
 
         <div class="col-md-offset-2 col-md-8">
             <form method = 'POST' action = '' enctype = 'multipart/form-data'>
             {% csrf_token %}
-            {{form|crispy}}
-            <button type = 'submit' value = 'Submit' class = 'btn btn-primary'>Submit</button>
+            {% crispy form %}
             </form>
         </div>
     </div>
